@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vinaya K T - .NET Developer Portfolio</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <script>
+        <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3b82f6',
+                        secondary: '#1e40af'
+                    },
+                    borderRadius: {
+                        'none': '0px',
+                        'sm': '4px',
+                        DEFAULT: '8px',
+                        'md': '12px',
+                        'lg': '16px',
+                        'xl': '20px',
+                        '2xl': '24px',
+                        '3xl': '32px',
+                        'full': '9999px',
+                        'button': '8px'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --primary: #4f46e5; /* Indigo */
+            --secondary: #f97316; /* Orange */
+            --accent: #14b8a6; /* Teal */
+            --light: #f9fafb;
+            --dark: #1f2937;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Remixicon Icon Fix */
+        :where([class^="ri-"])::before {
+            content: "\f3c2";
+        }
+
+        /* Hero Section Background */
+        .hero-bg {
+            background-image: url('https://readdy.ai/api/search-image?query=Modern%20minimalist%20tech%20workspace%20with%20clean%20white%20desk%2C%20laptop%2C%20coding%20environment%2C%20soft%20natural%20lighting%2C%20professional%20atmosphere%2C%20contemporary%20office%20setup%2C%20blue%20accent%20colors%2C%20clean%20background&width=1920&height=1080&seq=hero-bg&orientation=landscape');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+        }
+
+        /* Card Animations */
+        .skill-card,
+        .project-card {
+            transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease;
+            background-color: white;
+            border-radius: 1rem;
+        }
+
+            .skill-card:hover,
+            .project-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15);
+                background-color: var(--light);
+            }
+
+        /* Tech Tags & Labels */
+        .tag {
+            display: inline-block;
+            padding: 0.4rem 0.8rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border-radius: 9999px;
+            background: linear-gradient(to right, #c084fc, #4f46e5);
+            color: white;
+            transition: background 0.3s ease;
+        }
+
+            .tag:hover {
+                background: linear-gradient(to right, #ec4899, #6366f1);
+            }
+
+        /* Button Styling */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--primary);
+            color: white;
+            font-weight: 600;
+            border-radius: 0.5rem;
+            transition: background 0.3s ease;
+        }
+
+            .btn:hover {
+                background-color: var(--secondary);
+            }
+
+        /* Progress Bar Animation */
+        .progress-bar {
+            animation: fillProgress 2s ease-in-out;
+        }
+
+        @keyframes fillProgress {
+            from {
+                width: 0%;
+            }
+
+            to {
+                width: 100%;
+            }
+        }
+
+        /* Scroll Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+            .fade-in.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        /* Gradient Section Backgrounds (Optional) */
+        .section-gradient {
+            background: linear-gradient(to right, #e0f2fe, #fce7f3);
+        }
+
+        /* Typography Enhancement */
+        h1, h2, h3, h4 {
+            color: var(--dark);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        p {
+            color: #4b5563;
+        }
+    </style>
+
+</head>
+<body class="bg-white text-gray-800">
+    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm shadow-sm z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0">
+                    <span class="text-2xl font-bold text-primary">VINAYA</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#about" class="text-gray-700 hover:text-primary px-3 py-2 text-sm font-medium transition-colors">About</a>
+                        <a href="#skills" class="text-gray-700 hover:text-primary px-3 py-2 text-sm font-medium transition-colors">Skills</a>
+                        <a href="#projects" class="text-gray-700 hover:text-primary px-3 py-2 text-sm font-medium transition-colors">Projects</a>
+                        <a href="#projects" class="text-gray-700 hover:text-primary px-3 py-2 text-sm font-medium transition-colors">Resume</a>
+                        <a href="#contact" class="text-gray-700 hover:text-primary px-3 py-2 text-sm font-medium transition-colors">Contact</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="w-8 h-8 flex items-center justify-center">
+                        <i class="ri-menu-line text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="md:hidden hidden bg-white shadow-lg">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#about" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-primary">About</a>
+                <a href="#skills" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-primary">Skills</a>
+                <a href="#projects" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-primary">Projects</a>
+                <a href="#projects" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-primary">Resume</a>
+                <a href="#contact" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-primary">Contact</a>
+            </div>
+        </div>
+    </nav>
+    <section class="hero-bg min-h-screen flex items-center justify-center relative">
+ Gradient Overlay
+<div class="absolute inset-0 bg-gradient-to-r from-white/90 via-white/70 to-transparent"></div>
+ Content Wrapper
+<div class="text-center lg:text-left fade-in">
+    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
+        Hi, I'm <span class="bg-gradient-to-r from-purple-600 to-blue-500 text-transparent bg-clip-text">Vinaya K T</span>
+    </h1>
+    <p class="text-xl text-gray-700 mb-3">.NET Intern • Freelance Developer</p>
+    <p class="text-lg text-gray-600 mb-8 max-w-xl">
+        I create efficient and scalable web solutions using modern .NET frameworks, combining backend strength with front-end finesse.
+    </p>
+
+    <div class="flex flex-wrap justify-center lg:justify-start gap-4">
+
+        <a href="#projects" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-white font-semibold bg-gradient-to-r from-purple-600 to-blue-500 shadow-lg hover:from-purple-700 hover:to-blue-600 transition duration-300">
+            <i class="ri-briefcase-line text-lg"></i>
+            View My Work
+        </a>
+
+        <a href="#contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-primary border-2 border-primary font-semibold hover:bg-primary hover:text-white transition duration-300 shadow-md">
+            <i class="ri-mail-line text-lg"></i>
+            Get In Touch
+        </a>
+
+        <a href="Vinaya.pdf"
+           download
+           class="inline-flex items-center px-6 py-3 bg-gray-800 text-white font-semibold rounded-lg hover:bg-gray-900 transition duration-300">
+            <i class="ri-download-line mr-2 text-lg"></i>
+            Resume
+        </a>
+
+
+    </div>
+    </div>
+</section>
+
+<section id="about" class="py-24 bg-gradient-to-b from-white via-gray-50 to-white">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16" data-aos="fade-up">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 tracking-tight">
+                Meet <span class="text-primary">Vinaya K T</span>
+            </h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                Explore my background, technical skills, and passion for development.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+ <!--🌟 Profile Card-->
+<div data-aos="fade-right">
+    <div class="relative bg-white rounded-2xl shadow-xl border border-gray-200 p-8 text-center transition-all duration-500 hover:shadow-2xl group">
+        <div class="absolute -top-5 -right-5 w-12 h-12 rounded-full bg-primary/20 blur-2xl"></div>
+        <img src="vinaya.jpg" alt="Vinaya K T"
+             class="w-36 h-36 mx-auto rounded-full border-4 border-primary/30 shadow-lg object-cover mb-4 group-hover:scale-105 transition-transform duration-300">
+        <h3 class="text-2xl font-bold text-gray-900">Vinaya K T</h3>
+        <p class="text-primary font-medium text-sm mt-1">.NET Intern | MCA Student</p>
+        <div class="mt-4 text-gray-500 text-sm">
+            Kerala, India
+        </div>
+    </div>
+</div>
+ <!--💼 Summary Card-->
+<div data-aos="fade-left">
+    <div class="bg-white rounded-2xl shadow-xl p-8 transition-all duration-500 hover:shadow-2xl border border-gray-200">
+        <h3 class="text-2xl font-semibold text-primary mb-4">Professional Summary</h3>
+        <p class="text-gray-700 leading-relaxed text-lg">
+            I'm <strong class="text-primary">Vinaya K T</strong>, a passionate .NET intern and MCA student from Kerala. I specialize in crafting robust web applications using
+            <span class="font-semibold text-gray-900">ASP.NET, C#, and SQL Server</span>. My goal is to evolve into a full-stack developer who combines solid backend logic with intuitive UI/UX experiences. I enjoy solving problems and continuously learning new tools and technologies to stay ahead in the tech world.
+        </p>
+ <!--Skills Tags-->
+<div class="mt-6 flex flex-wrap gap-3">
+                        <span class="bg-primary/10 text-primary px-4 py-1 text-sm rounded-full">ASP.NET</span>
+                        <span class="bg-primary/10 text-primary px-4 py-1 text-sm rounded-full">C#</span>
+                        <span class="bg-primary/10 text-primary px-4 py-1 text-sm rounded-full">SQL Server</span>
+                        <span class="bg-primary/10 text-primary px-4 py-1 text-sm rounded-full">Bootstrap</span>
+                        <span class="bg-primary/10 text-primary px-4 py-1 text-sm rounded-full">HTML & CSS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="skills" class="py-24 bg-gradient-to-br from-white via-gray-50 to-blue-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-extrabold text-gray-800 mb-4"> My Technical Skills</h2>
+            <p class="text-lg text-gray-600 max-w-xl mx-auto">
+                Technologies and tools I use to build modern, scalable, and responsive applications.
+            </p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
+ <!--Skill Card-->
+<div class="bg-white/70 backdrop-blur-lg border border-white/40 rounded-3xl p-6 text-center shadow-xl hover:shadow-2xl transform hover:scale-[1.03] transition duration-500" data-aos="zoom-in">
+    <div class="w-16 h-16 mx-auto mb-5 flex items-center justify-center rounded-full bg-gradient-to-br from-orange-400 to-orange-600 shadow-md">
+        <i class="ri-html5-fill text-white text-3xl"></i>
+    </div>
+    <h3 class="text-xl font-bold text-gray-800 mb-2">HTML5</h3>
+    <p class="text-sm text-gray-600 mb-4">Semantic markup & modern standards</p>
+    <div class="w-full bg-gray-200 rounded-full h-2">
+        <div class="bg-orange-500 h-2 rounded-full" style="width: 90%"></div>
+    </div>
+</div>
+ <!--Repeat for other skills-->
+<div class="bg-white/70 backdrop-blur-lg border border-white/40 rounded-3xl p-6 text-center shadow-xl hover:shadow-2xl transform hover:scale-[1.03] transition duration-500" data-aos="zoom-in" data-aos-delay="100">
+                <div class="w-16 h-16 mx-auto mb-5 flex items-center justify-center rounded-full bg-gradient-to-br from-blue-400 to-blue-600 shadow-md">
+                    <i class="ri-css3-fill text-white text-3xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-2">CSS3</h3>
+                <p class="text-sm text-gray-600 mb-4">Modern styling & responsive design</p>
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div class="bg-blue-600 h-2 rounded-full" style="width: 85%"></div>
+                </div>
+            </div>
+
+            <div class="bg-white/70 backdrop-blur-lg border border-white/40 rounded-3xl p-6 text-center shadow-xl hover:shadow-2xl transform hover:scale-[1.03] transition duration-500" data-aos="zoom-in" data-aos-delay="200">
+                <div class="w-16 h-16 mx-auto mb-5 flex items-center justify-center rounded-full bg-gradient-to-br from-purple-400 to-purple-700 shadow-md">
+                    <i class="ri-bootstrap-fill text-white text-3xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-2">Bootstrap</h3>
+                <p class="text-sm text-gray-600 mb-4">Responsive framework & UI utilities</p>
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div class="bg-purple-700 h-2 rounded-full" style="width: 80%"></div>
+                </div>
+            </div>
+
+            <div class="bg-white/70 backdrop-blur-lg border border-white/40 rounded-3xl p-6 text-center shadow-xl hover:shadow-2xl transform hover:scale-[1.03] transition duration-500" data-aos="zoom-in" data-aos-delay="300">
+                <div class="w-16 h-16 mx-auto mb-5 flex items-center justify-center rounded-full bg-gradient-to-br from-indigo-400 to-indigo-700 shadow-md">
+                    <i class="ri-microsoft-fill text-white text-3xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-2">ASP.NET</h3>
+                <p class="text-sm text-gray-600 mb-4">Dynamic web apps & MVC framework</p>
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div class="bg-indigo-700 h-2 rounded-full" style="width: 85%"></div>
+                </div>
+            </div>
+
+            <div class="bg-white/70 backdrop-blur-lg border border-white/40 rounded-3xl p-6 text-center shadow-xl hover:shadow-2xl transform hover:scale-[1.03] transition duration-500" data-aos="zoom-in" data-aos-delay="400">
+                <div class="w-16 h-16 mx-auto mb-5 flex items-center justify-center rounded-full bg-gradient-to-br from-green-400 to-green-700 shadow-md">
+                    <i class="ri-code-s-slash-fill text-white text-3xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-2">C#</h3>
+                <p class="text-sm text-gray-600 mb-4">OOP & .NET development</p>
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div class="bg-green-700 h-2 rounded-full" style="width: 80%"></div>
+                </div>
+            </div>
+
+            <div class="bg-white/70 backdrop-blur-lg border border-white/40 rounded-3xl p-6 text-center shadow-xl hover:shadow-2xl transform hover:scale-[1.03] transition duration-500" data-aos="zoom-in" data-aos-delay="500">
+                <div class="w-16 h-16 mx-auto mb-5 flex items-center justify-center rounded-full bg-gradient-to-br from-red-400 to-red-700 shadow-md">
+                    <i class="ri-database-2-fill text-white text-3xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-2">SQL Server</h3>
+                <p class="text-sm text-gray-600 mb-4">Data modeling & query optimization</p>
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div class="bg-red-700 h-2 rounded-full" style="width: 75%"></div>
+                </div>
+            </div>
+
+            <div class="bg-white/70 backdrop-blur-lg border border-white/40 rounded-3xl p-6 text-center shadow-xl hover:shadow-2xl transform hover:scale-[1.03] transition duration-500" data-aos="zoom-in" data-aos-delay="600">
+                <div class="w-16 h-16 mx-auto mb-5 flex items-center justify-center rounded-full bg-gradient-to-br from-yellow-400 to-yellow-600 shadow-md">
+                    <i class="ri-python-fill text-white text-3xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-2">Python</h3>
+                <p class="text-sm text-gray-600 mb-4">Scripting & backend development</p>
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div class="bg-yellow-500 h-2 rounded-full" style="width: 70%"></div>
+                </div>
+            </div>
+
+            <div class="bg-white/70 backdrop-blur-lg border border-white/40 rounded-3xl p-6 text-center shadow-xl hover:shadow-2xl transform hover:scale-[1.03] transition duration-500" data-aos="zoom-in" data-aos-delay="700">
+                <div class="w-16 h-16 mx-auto mb-5 flex items-center justify-center rounded-full bg-gradient-to-br from-pink-400 to-pink-700 shadow-md">
+                    <i class="ri-java-fill text-white text-3xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-2">Java</h3>
+                <p class="text-sm text-gray-600 mb-4">Enterprise app development</p>
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div class="bg-pink-600 h-2 rounded-full" style="width: 70%"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="projects" class="py-24 bg-gray-100 font-['Poppins']">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+ <!--Section Title-->
+<div class="text-center mb-16" data-aos="fade-up">
+    <h2 class="text-4xl font-extrabold text-gray-900 mb-4">🚀 My Projects</h2>
+    <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+        Explore my work in web development and AI-powered solutions.
+    </p>
+</div>
+ <!--Project Cards-->
+<div class="grid gap-12 lg:grid-cols-2" data-aos="fade-up" data-aos-delay="100">
+ <!--College Website Project-->
+<div class="backdrop-blur-sm bg-white/70 border border-gray-200 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition duration-300">
+    <div class="mb-4 rounded-xl overflow-hidden">
+        <img src="clg.jpg" alt="College Website" class="w-full h-56 object-cover rounded-lg hover:scale-105 transition-transform duration-300" />
+    </div>
+    <h3 class="text-2xl font-semibold text-indigo-700 mb-2">College Website</h3>
+    <p class="text-gray-700 mb-4">
+        Responsive web portal with modules for academics, admissions, student login, and campus activities.
+    </p>
+    <div class="flex flex-wrap gap-2 mb-6">
+        <span class="bg-indigo-100 text-indigo-800 text-sm px-3 py-1 rounded-full">PHP</span>
+        <span class="bg-yellow-100 text-yellow-800 text-sm px-3 py-1 rounded-full">HTML</span>
+        <span class="bg-green-100 text-green-800 text-sm px-3 py-1 rounded-full">MySQL</span>
+    </div>
+    <a href="#" id="view-college-btn"
+       class="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-indigo-600 text-white font-medium hover:bg-indigo-700 transition">
+        <i class="ri-global-line text-lg animate-pulse"></i>
+        View Details
+    </a>
+</div>
+ <!--Pothole Detection Project-->
+<div class="backdrop-blur-sm bg-white/70 border border-gray-200 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition duration-300">
+                <div class="mb-4 rounded-xl overflow-hidden">
+                    <img src="road.png" alt="Pothole Detection System" class="w-full h-56 object-cover rounded-lg hover:scale-105 transition-transform duration-300" />
+                </div>
+                <h3 class="text-2xl font-semibold text-pink-700 mb-2">Pothole Detection System</h3>
+                <p class="text-gray-700 mb-4">
+                    AI-powered system for real-time detection and logging of road potholes with reporting dashboard.
+                </p>
+                <div class="flex flex-wrap gap-2 mb-6">
+                    <span class="bg-purple-100 text-purple-800 text-sm px-3 py-1 rounded-full">ASP.NET</span>
+                    <span class="bg-green-100 text-green-800 text-sm px-3 py-1 rounded-full">C#</span>
+                    <span class="bg-red-100 text-red-800 text-sm px-3 py-1 rounded-full">SQL Server</span>
+                </div>
+                <a href="#" id="view-pothole-btn"
+                   class="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-pink-600 text-white font-medium hover:bg-pink-700 transition">
+                    <i class="ri-road-map-line text-lg animate-pulse"></i>
+                    View Details
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+
+<section id="resume" class="py-24 bg-gradient-to-br from-gray-50 via-white to-gray-100 font-['Poppins']">
+    <div class="max-w-6xl mx-auto px-6">
+        <!--Heading-->
+        <div class="text-center mb-16" data-aos="fade-up">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight mb-3">
+                Resume
+            </h2>
+            <p class="text-lg text-gray-600 max-w-xl mx-auto leading-relaxed">
+                Download my resume to explore my skills, experience, and projects in detail.
+            </p>
+        </div>
+        <!--Resume Details Grid-->
+        <div class="grid md:grid-cols-3 gap-8" data-aos="fade-up" data-aos-delay="100">
+            <!--🎓 Education-->
+            <div class="bg-white shadow-xl rounded-2xl p-8 hover:shadow-2xl transition-shadow duration-300 border-t-4 border-indigo-500">
+                <h3 class="text-2xl font-bold text-indigo-600 mb-6 flex items-center">🎓 Education</h3>
+                <div class="mb-6">
+                    <h4 class="text-lg font-semibold text-gray-900">B.Sc. Information Technology</h4>
+                    <p class="text-gray-600">University of Calicut</p>
+                    <p class="text-sm text-gray-500">2019 – 2021</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-gray-900">Master of Computer Applications</h4>
+                    <p class="text-gray-600">University of Calicut</p>
+                    <p class="text-sm text-gray-500">2023 – 2025</p>
+                </div>
+            </div>
+            <!--📜 Certifications-->
+            <div class="bg-white shadow-xl rounded-2xl p-8 hover:shadow-2xl transition-shadow duration-300 border-t-4 border-emerald-500">
+                <h3 class="text-2xl font-bold text-emerald-600 mb-6 flex items-center">📜 Certifications</h3>
+                <div>
+                    <h4 class="text-lg font-semibold text-gray-900">Coursera Certification</h4>
+                    <p class="text-gray-600">Professional Development Course</p>
+                    <a href="https://www.coursera.org/account/accomplishments/verify/BGLXKMKYC0R5"
+                       target="_blank"
+                       class="inline-block mt-3 text-emerald-600 hover:text-emerald-800 underline text-sm transition duration-200">
+                        ➤ View Certificate
+                    </a>
+                </div>
+            </div>
+            <!--💼 Experience-->
+            <div class="bg-white shadow-xl rounded-2xl p-8 hover:shadow-2xl transition-shadow duration-300 border-t-4 border-orange-400">
+                <h3 class="text-2xl font-bold text-orange-500 mb-6 flex items-center">💼 Experience</h3>
+                <div>
+                    <p class="text-gray-900 font-semibold">.NET Intern</p>
+                    <p class="text-gray-600">
+                        DC Infotech
+                        <span class="text-xs bg-orange-100 text-orange-600 px-2 py-0.5 rounded-full ml-1">Present</span>
+                    </p>
+                    <p class="text-sm text-gray-600 mt-3 leading-relaxed">
+                        Working on <span class="font-medium text-gray-800">ASP.NET, C#, SQL Server</span> to build scalable web applications.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--🔽 Resume Download Button-->
+        <div class="w-full flex justify-center mt-12" data-aos="zoom-in" data-aos-delay="200">
+            <a href="Vinaya.pdf"
+               download
+               class="inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 text-white font-semibold rounded-full hover:bg-indigo-700 transition duration-300 shadow-lg text-lg">
+                <i class="ri-download-2-line text-xl"></i>
+                Download Resume
+            </a>
+        </div>
+
+
+    </div>
+    </section>
+
+    <section id="contact" class="py-24 bg-gradient-to-br from-pink-50 via-white to-blue-50 font-['Poppins']">
+        <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
+ <!--Section Header-->
+<div class="text-center mb-16" data-aos="fade-up">
+    <h2 class="text-4xl font-extrabold bg-gradient-to-r from-indigo-500 via-pink-500 to-purple-500 bg-clip-text text-transparent">
+        Get In Touch
+    </h2>
+    <p class="text-lg text-gray-600 max-w-xl mx-auto">
+        Let's discuss your next project or collaboration opportunity
+    </p>
+</div>
+
+<div class="grid lg:grid-cols-2 gap-12 items-start" data-aos="fade-up" data-aos-delay="100">
+ <!--Contact Info-->
+<div class="bg-gradient-to-br from-indigo-50 via-white to-purple-50 backdrop-blur-md border border-gray-200 p-8 rounded-3xl shadow-xl hover:shadow-2xl transition duration-300">
+<h3 class="text-2xl font-bold text-gray-900 mb-8">📞 Contact Information</h3>
+<div class="space-y-6">
+ <!--Email-->
+<div class="flex items-center space-x-4 group">
+    <div class="w-12 h-12 bg-indigo-100 text-indigo-600 flex items-center justify-center rounded-full group-hover:bg-indigo-500 group-hover:text-white transition">
+        <i class="ri-mail-line text-xl"></i>
+    </div>
+    <div>
+        <h4 class="font-semibold text-gray-800">Email</h4>
+        <a href="mailto:vinayakalarikkal@gmail.com" class="text-gray-600 hover:text-indigo-600 transition">
+            vinayakalarikkal@gmail.com
+        </a>
+    </div>
+</div>
+ <!--Phone-->
+<div class="flex items-center space-x-4 group">
+    <div class="w-12 h-12 bg-green-100 text-green-600 flex items-center justify-center rounded-full group-hover:bg-green-500 group-hover:text-white transition">
+        <i class="ri-phone-line text-xl"></i>
+    </div>
+    <div>
+        <h4 class="font-semibold text-gray-800">Phone</h4>
+        <a href="tel:+919188282270" class="text-gray-600 hover:text-green-600 transition">
+            +91 91882 82270
+        </a>
+    </div>
+</div>
+ <!--LinkedIn-->
+<div class="flex items-center space-x-4 group">
+    <div class="w-12 h-12 bg-blue-100 text-blue-600 flex items-center justify-center rounded-full group-hover:bg-blue-500 group-hover:text-white transition">
+        <i class="ri-linkedin-box-fill text-2xl"></i>
+    </div>
+    <div>
+        <h4 class="font-semibold text-gray-800">LinkedIn</h4>
+        <a href="https://www.linkedin.com/in/vinaya-kt-99834a260" target="_blank" class="text-gray-600 hover:text-blue-600 transition">
+            linkedin.com/in/vinaya-kt-99834a260
+        </a>
+    </div>
+</div>
+ GitHub
+<div class="flex items-center space-x-4 group">
+            <div class="w-12 h-12 bg-gray-100 text-gray-800 flex items-center justify-center rounded-full group-hover:bg-gray-800 group-hover:text-white transition">
+                <i class="ri-github-fill text-2xl"></i>
+            </div>
+            <div>
+                <h4 class="font-semibold text-gray-800">GitHub</h4>
+                <a href="https://github.com/Vinaya-K-T" target="_blank" class="text-gray-600 hover:text-gray-800 transition">
+                    github.com/Vinaya-K-T
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+ <!--Contact Form-->
+<div class="bg-gradient-to-br from-white via-pink-50 to-indigo-50 p-8 rounded-3xl shadow-xl border border-gray-200 hover:shadow-2xl transition duration-300">
+    <h3 class="text-2xl font-bold text-gray-900 mb-6">✉️ Send a Message</h3>
+    <form class="space-y-6">
+ <!--Name-->
+<div>
+    <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+    <input type="text" id="name" name="name" placeholder="Your Name"
+           class="w-full px-4 py-3 text-sm rounded-lg border border-gray-300 focus:ring-4 focus:ring-indigo-300 focus:border-indigo-500 transition outline-none" />
+</div>
+ <!--Email-->
+<div>
+    <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+    <input type="email" id="email" name="email" placeholder="your@email.com"
+           class="w-full px-4 py-3 text-sm rounded-lg border border-gray-300 focus:ring-4 focus:ring-pink-300 focus:border-pink-500 transition outline-none" />
+</div>
+ <!--Message-->
+<div>
+    <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+    <textarea id="message" name="message" rows="4" placeholder="Your message here..."
+              class="w-full px-4 py-3 text-sm rounded-lg border border-gray-300 focus:ring-4 focus:ring-purple-300 focus:border-purple-500 transition outline-none resize-none"></textarea>
+</div>
+ <!--Submit Button-->
+<button type="submit"
+                                class="w-full py-3 px-6 bg-gradient-to-r from-indigo-500 via-pink-500 to-purple-500 hover:opacity-90 text-white font-medium rounded-full transition duration-300 shadow-lg">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <p class="text-gray-400">&copy; 2025 Vinaya K T. All rights reserved.</p>
+                <div class="mt-4">
+                    <button id="back-to-top" class="bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-secondary transition-colors">
+                        <i class="ri-arrow-up-line text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script id="navigation-script">
+        document.addEventListener('DOMContentLoaded', function () {
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', function () {
+            mobileMenu.classList.toggle('hidden');
+            });
+        const navLinks = document.querySelectorAll('nav a[href^="#"]');
+            navLinks.forEach(link => {
+            link.addEventListener('click', function () {
+                mobileMenu.classList.add('hidden');
+            });
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // ===== Scroll Animation Observer =====
+            const observerOptions = {
+            threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+            };
+
+        const observer = new IntersectionObserver(function (entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+            });
+
+        // ===== Back to Top Button =====
+        const backToTopBtn = document.getElementById('back-to-top');
+        if (backToTopBtn) {
+            backToTopBtn.addEventListener('click', function () {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            }
+
+        // ===== Contact Form Submission =====
+        const contactForm = document.querySelector('form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+                const formData = new FormData(this);
+                const name = formData.get('name');
+                const email = formData.get('email');
+                const message = formData.get('message');
+                if (name && email && message) {
+                    alert('Thank you for your message! I will get back to you soon.');
+                    this.reset();
+                } else {
+                    alert('Please fill in all fields.');
+                }
+            });
+            }
+
+        // ===== View Education Details Modal =====
+        const viewEducationBtn = document.getElementById('view-education-btn');
+        if (viewEducationBtn) {
+            viewEducationBtn.addEventListener('click', function () {
+                const educationModal = document.createElement('div');
+                educationModal.className = 'fixed inset-0 bg-black/50 flex items-center justify-center z-50';
+                educationModal.innerHTML = `
+<div class="bg-white rounded-xl shadow-lg p-8 max-w-lg w-full mx-4 relative">
+                                      <button class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+                                        <i class="ri-close-line text-xl"></i>
+                                      </button>
+                                      <div class="space-y-6">
+                                        <div class="flex items-start space-x-4">
+                                          <h3 class="text-xl font-semibold text-primary mb-4">Key Features</h3>
+                                          <ul class="space-y-3 text-gray-800 leading-relaxed list-disc list-inside">
+                                            <li>Allows prospective students to <span class="font-medium text-gray-900">apply online</span>, track application status, and make fee payments.</li>
+                                            <li>Secure logins for students to access <span class="font-medium text-gray-900">grades, materials, and announcements</span>, and for faculty to manage courses and attendance.</li>
+                                            <li>Admins can easily update website content such as <span class="text-gray-900 font-medium">news, events, and program details</span>.</li>
+                                            <li>View complete <span class="font-medium text-gray-900">program information, curriculum, and course descriptions</span>.</li>
+                                            <li>Experience campus life via <span class="font-medium text-gray-900">photos and videos of events and achievements</span>.</li>
+                                            <li>Convenient and secure <span class="font-medium text-gray-900">online fee payment system</span>.</li>
+                                          </ul>
+                                        </div>
+</div>
+<div class="bg-white rounded-xl shadow-lg p-8 max-w-lg w-full mx-4 relative">
+                                      <button class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+                                        <i class="ri-close-line text-xl"></i>
+                                      </button>
+                                        <div id="pothole-details" class="mt-6 transition-all duration-300">
+                                          <div class="flex items-start space-x-4 mb-4">
+                                            <div class="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-full flex-shrink-0">
+                                              <i class="ri-roadster-line text-primary text-xl"></i>
+                                            </div>
+                                            <div>
+                                              <h4 class="text-xl font-semibold text-primary mb-2">System Features</h4>
+                                              <p class="text-gray-600">AI-powered modules ensure efficient detection and communication of pothole data.</p>
+                                            </div>
+                                          </div>
+                                          <ul class="space-y-3 text-gray-800 leading-relaxed list-disc list-inside">
+                                            <li><span class="font-medium text-gray-900">Pothole Detection:</span> Uses sensors or vision-based AI to detect potholes on roads in real-time.</li>
+                                            <li><span class="font-medium text-gray-900">Data Transmission:</span> Sends location and depth data to a centralized server using GPS and wireless communication.</li>
+                                            <li><span class="font-medium text-gray-900">Smart Analysis:</span> Analyzes reported data to prioritize repairs and generate heatmaps for municipal planning.</li>
+                                          </ul>
+                                        </div>
+                                      </div>
+</div>
+
+                                            `;
+                document.body.appendChild(educationModal);
+
+                const closeBtn = educationModal.querySelector('button');
+                closeBtn.addEventListener('click', function () {
+                    educationModal.remove();
+                });
+
+                educationModal.addEventListener('click', function (e) {
+                    if (e.target === educationModal) {
+                        educationModal.remove();
+                    }
+                });
+            });
+            }
+
+        // ===== Toggle Pothole Details (if on page) =====
+        const viewBtn = document.getElementById('view-pothole-btn');
+        const details = document.getElementById('pothole-details');
+        const icon = document.getElementById('toggle-icon');
+
+        if (viewBtn && details && icon) {
+            viewBtn.addEventListener('click', function () {
+                details.classList.toggle('hidden');
+                icon.classList.toggle('ri-arrow-down-s-line');
+                icon.classList.toggle('ri-arrow-up-s-line');
+            });
+            }
+
+        });
+
+    </script>
+    <script>
+        function createModal(contentHTML) {
+            const modal = document.createElement('div');
+        modal.className = 'fixed inset-0 bg-black/50 flex items-center justify-center z-50';
+        modal.innerHTML = `
+        <div class="bg-white rounded-xl shadow-lg p-8 max-w-lg w-full mx-4 relative">
+            <button class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 close-modal">
+                <i class="ri-close-line text-xl"></i>
+            </button>
+            ${contentHTML}
+        </div>
+        `;
+
+        document.body.appendChild(modal);
+
+            modal.querySelector('.close-modal').addEventListener('click', () => modal.remove());
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) modal.remove();
+            });
+        }
+
+        // College Website Details
+        document.getElementById('view-college-btn')?.addEventListener('click', () => {
+            createModal(`
+                            <h3 class="text-xl font-semibold text-primary mb-4">Key Features – College Website</h3>
+                            <ul class="space-y-3 text-gray-800 leading-relaxed list-disc list-inside">
+                                <li><span class="font-medium text-gray-900">Online Application:</span> Apply online, track status, and pay fees.</li>
+                                <li><span class="font-medium text-gray-900">Secure Portals:</span> Students access grades, faculty manage attendance.</li>
+                                <li><span class="font-medium text-gray-900">Admin Dashboard:</span> Update events, news, and programs easily.</li>
+                                <li><span class="font-medium text-gray-900">Program Info:</span> Curriculum, course details, and syllabi.</li>
+                                <li><span class="font-medium text-gray-900">Campus Life:</span> Gallery of photos/videos, student achievements.</li>
+                                <li><span class="font-medium text-gray-900">Online Payment:</span> Secure fee transactions integrated.</li>
+                            </ul>
+                            `);
+        });
+
+        // Pothole Detection Details
+        document.getElementById('view-pothole-btn')?.addEventListener('click', () => {
+            createModal(`
+                            <h3 class="text-xl font-semibold text-primary mb-4">System Features – Pothole Detection</h3>
+                            <p class="text-gray-600 mb-4">AI-powered modules ensure efficient detection and communication of pothole data.</p>
+                            <ul class="space-y-3 text-gray-800 leading-relaxed list-disc list-inside">
+                                <li><span class="font-medium text-gray-900">Pothole Detection:</span> Real-time road scanning using sensors or AI.</li>
+                                <li><span class="font-medium text-gray-900">Data Transmission:</span> Sends pothole data using GPS & wireless tech.</li>
+                                <li><span class="font-medium text-gray-900">Smart Analysis:</span> Generates heatmaps and repair priorities.</li>
+                            </ul>
+                            `);
+        });
+    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>AOS.init();</script>
+
+</body>
+</html>
+
